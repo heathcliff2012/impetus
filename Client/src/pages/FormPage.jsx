@@ -3,8 +3,9 @@ import axios from 'axios';
 import { motion } from 'framer-motion';
 import { Ticket, DollarSign, User, Calendar, CreditCard, Send, CheckCircle2 } from 'lucide-react';
 
-const API_URL = '/api/tickets';
-const STATS_URL = '/api/tickets/stats';
+const BASE_URL = 'https://impetus-backend-fp1r.onrender.com';  
+const API_URL = `${BASE_URL}/api/tickets`;
+const STATS_URL = `${BASE_URL}/api/tickets/stats`;
 
 const TICKET_TYPES = ['Flagship', 'non-flagship', 'lazer tag', 'all in one'];
 const PAYMENT_MODES = ['cash', 'UPI'];
