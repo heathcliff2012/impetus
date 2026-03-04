@@ -124,22 +124,22 @@ export default function DataPage() {
                         />
                         <StatCard
                             title="Flagship"
-                            value={stats.typeBreakdown['Flagship'] || 0}
+                            value={(stats.typeBreakdown || {})['Flagship'] || 0}
                             icon={Activity}
                         />
                         <StatCard
                             title="All-In-One"
-                            value={stats.typeBreakdown['all in one'] || 0}
+                            value={(stats.typeBreakdown || {})['all in one'] || 0}
                             icon={Activity}
                         />
                         <StatCard
                             title="Non-Flagship"
-                            value={stats.typeBreakdown['non-flagship'] || 0}
+                            value={(stats.typeBreakdown || {})['non-flagship'] || 0}
                             icon={Activity}
                         />
                         <StatCard
                             title="Lazer Tag"
-                            value={stats.typeBreakdown['lazer tag'] || 0}
+                            value={(stats.typeBreakdown || {})['lazer tag'] || 0}
                             icon={Activity}
                         />
                     </div>
@@ -153,10 +153,10 @@ export default function DataPage() {
                             </h3>
                             <div className="space-y-4">
                                 {Object.entries({
-                                    'Flagship': stats.typeBreakdown['Flagship'] || 0,
-                                    'Non-Flagship': stats.typeBreakdown['non-flagship'] || 0,
-                                    'Lazer Tag': stats.typeBreakdown['lazer tag'] || 0,
-                                    'All In One': stats.typeBreakdown['all in one'] || 0
+                                    'Flagship': (stats.typeBreakdown || {})['Flagship'] || 0,
+                                    'Non-Flagship': (stats.typeBreakdown || {})['non-flagship'] || 0,
+                                    'Lazer Tag': (stats.typeBreakdown || {})['lazer tag'] || 0,
+                                    'All In One': (stats.typeBreakdown || {})['all in one'] || 0
                                 }).map(([type, count]) => (
                                     <div key={type} className="flex items-center justify-between">
                                         <span className="font-medium text-base-content/80">{type}</span>
