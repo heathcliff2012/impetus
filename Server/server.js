@@ -12,7 +12,7 @@ app.use(cors(
     {
         origin: 'https://impetus-frontend.onrender.com',
         credentials: true
-    }   
+    }
 ));
 app.use(express.json());
 
@@ -51,13 +51,16 @@ app.get('/api/tickets', async (req, res) => {
 
 app.get('/api/tickets/duplicate', async (req, res) => {
     try {
-        const { ticketNumber, eventName } = req.body;
+        const { ticketNumber, eventName } = req.query;
+        if (!ticketNumber || !eventName) {
+            return res.json(false);
+        }
         const tickets = await Ticket.find({ ticketNumber, eventName });
         if (tickets.length > 0) {
-            return true;
+            return res.json(true);
         }
         else {
-            return false;   
+            return res.json(false);
         }
     } catch (error) {
         console.error('Error fetching tickets:', error);
