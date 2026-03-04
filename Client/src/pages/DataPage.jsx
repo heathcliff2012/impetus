@@ -4,8 +4,9 @@ import { format } from 'date-fns';
 import { motion } from 'framer-motion';
 import { Activity, CreditCard, Ticket as TicketIcon, CalendarDays, RefreshCw, Trash2 } from 'lucide-react';
 
-const API_URL = '/api/tickets';
-const STATS_URL = '/api/tickets/stats';
+const BASE_URL = 'https://impetus-backend-fp1r.onrender.com';
+const API_URL = `${BASE_URL}/api/tickets`;
+const STATS_URL = `${BASE_URL}/api/tickets/stats`;
 
 const StatCard = ({ title, value, icon: Icon }) => (
     <div className={`card overflow-hidden border border-base-200 bg-base-100 shadow-sm`}>
@@ -197,7 +198,7 @@ export default function DataPage() {
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {tickets.length > 0 ? tickets.map((t) => (
+                                        {Array.isArray(tickets) && tickets.length > 0 ? tickets.map((t) => (
                                             <tr key={t._id} className="hover">
                                                 <td className="whitespace-nowrap font-medium font-mono text-xs">
                                                     {format(new Date(t.createdAt), 'h:mm a')}
